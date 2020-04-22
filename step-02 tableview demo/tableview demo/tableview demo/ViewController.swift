@@ -51,15 +51,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        // let cell = UITableViewCell() // 注释普通UITableViewCell，改用dequeueReusableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath)
         
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = dailyTasks[indexPath.row]
+            cell.imageView?.image = UIImage(named: "icon-mark")
+            cell.accessoryType = .disclosureIndicator
+            cell.detailTextLabel?.text = "this is a detail info for \(indexPath.row)"
         case 1:
             cell.textLabel?.text = weeklyTasks[indexPath.row]
+            cell.imageView?.image = UIImage(named: "icon-ring")
+            cell.accessoryType = .detailButton
+            cell.detailTextLabel?.text = ""
         case 2:
             cell.textLabel?.text = monthlyTasks[indexPath.row]
+            cell.imageView?.image = UIImage(named: "icon-calendar")
+            cell.accessoryType = .checkmark
+            cell.detailTextLabel?.text = ""
         default:
             cell.textLabel?.text = ""
         }
