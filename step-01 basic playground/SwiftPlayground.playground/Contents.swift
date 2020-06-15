@@ -91,3 +91,64 @@ precondition(index > 0, "Index must be greater than zero.") // 如果index为负
 for index in 1...5 {
     print("\(index) times 5 is \(index * 5)")
 }
+
+func returnFifteen() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+
+returnFifteen()
+
+class Shape {
+    var numberOfSides = 0
+    func simpleDesc() -> String {
+        return "A shape with \(numberOfSides) sides."
+    }
+}
+
+var shape = Shape()
+shape.numberOfSides = 10
+var shapeDesc = shape.simpleDesc()
+
+// 基类、类的继承
+class NamedShape {
+    var numberOfSide: Int = 0
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func simpleDescription() -> String {
+        return "A shape with \(numberOfSide) sides."
+    }
+}
+
+// 子类，继承至NamedShape基类
+class Square: NamedShape {
+    var sideLength: Double
+    
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength
+        super.init(name: name)
+        numberOfSide = 4
+    }
+    
+    func area() -> Double {
+        return sideLength * sideLength
+    }
+    
+    override func simpleDescription() -> String {
+        return "A square with sides of length \(sideLength)."
+    }
+}
+
+let test = Square(sideLength: 5.4, name: "My test square")
+test.area()
+test.simpleDescription()
+
+
