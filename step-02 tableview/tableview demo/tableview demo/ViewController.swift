@@ -12,10 +12,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     let sectionNums = 3
     let dailyTasks = ["Check all windows",
-                      "Check all doors",
-                      "Is the boiler fueled?",
-                      "Check the mailbox",
-                      "Empty trash containers",
+//                      "Check all doors",
+//                      "Is the boiler fueled?",
+//                      "Check the mailbox",
+//                      "Empty trash containers",
                       "If freezing, check water pipes",
                       "Document \"strange and unusual\" occurrences"]
     
@@ -64,12 +64,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.textLabel?.text = weeklyTasks[indexPath.row]
             cell.imageView?.image = UIImage(named: "icon-ring")
             cell.accessoryType = .detailButton
-            cell.detailTextLabel?.text = ""
+            cell.detailTextLabel?.text = nil
         case 2:
             cell.textLabel?.text = monthlyTasks[indexPath.row]
             cell.imageView?.image = UIImage(named: "icon-calendar")
             cell.accessoryType = .checkmark
-            cell.detailTextLabel?.text = ""
+            cell.detailTextLabel?.text = "🐶"
         default:
             cell.textLabel?.text = ""
         }
