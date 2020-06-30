@@ -71,7 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.accessoryType = .checkmark
             cell.detailTextLabel?.text = "🐶"
         default:
-            cell.textLabel?.text = ""
+            cell.textLabel?.text = nil
         }
         
         return cell
