@@ -104,12 +104,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         case 1:
             weeklyTasks.remove(at: indexPath.row)
             tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         case 2:
             monthlyTasks.remove(at: indexPath.row)
             tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .none)
             tableView.endUpdates()
         default:
             return
