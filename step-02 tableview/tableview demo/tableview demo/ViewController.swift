@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let sectionNums = 3
-    let dailyTasks = ["Check all windows",
+    var sectionNums = 3
+    var dailyTasks = ["Check all windows",
 //                      "Check all doors",
 //                      "Is the boiler fueled?",
 //                      "Check the mailbox",
@@ -19,11 +19,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                       "If freezing, check water pipes",
                       "Document \"strange and unusual\" occurrences"]
     
-    let weeklyTasks = ["Check inside all cabins",
+    var weeklyTasks = ["Check inside all cabins",
                        "Flush all lavatories in cabins",
                        "Walk the perimeter of property"]
     
-    let monthlyTasks = ["Test security alarm",
+    var monthlyTasks = ["Test security alarm",
                         "Test motion detectors",
                         "Test smoke alarms"]
     
@@ -90,7 +90,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Delete section: \(indexPath.section)")
+        }
+        
+        switch indexPath.section {
+        case 0:
+            dailyTasks.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        case 1:
+            weeklyTasks.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        case 2:
+            monthlyTasks.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        default:
+            return
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
